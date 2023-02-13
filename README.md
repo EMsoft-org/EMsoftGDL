@@ -2,7 +2,7 @@
 This repository contains stand-alone IDL routines that can be executed in a GDL Docker image; GDL is an open-source package that is virtually compatible with IDL, apart from a few routines.  Below are instructions for running GDL in a Docker image on Mac OS X.  Before you build this Docker image, make sure that you allocate sufficient memory in the Docker app settings; 48Gb of Memory seems to be what's needed (on Mac M1, running OS Monterey; if you get strange compilation errors during the GDL build, then that's probably because insufficient memory is allocated within the Docker app).
 
 
-###Instructions for running GDL in a Docker image with X11 support on Mac OS X
+### Instructions for running GDL in a Docker image with X11 support on Mac OS X
 
 * After cloning this repository, navigate to the Docker folder and edit the **Docker-compose.yml** file; near the bottom of the file, replace the string **"/full-path-to-your-EMsoft-data-folder"** with the actual full path. Save the file.
 
