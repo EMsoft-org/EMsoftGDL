@@ -9,7 +9,7 @@ This repository contains stand-alone IDL routines that can be executed in a GDL 
 
 * If you haven't already done so, download and install the [Docker app](https://www.docker.com/products/docker-desktop/); start the app.
 
-* Create a folder called **EMsoftGDL**; inside this folder, create a second folder called **Docker** inside which you will run the Docker image; inside the **EMsoftGSL** folder, create a symbolic link to your regular EMsoft data folder using the following command:
+* Create a folder called **EMsoftGDL**; inside this folder, create a second folder called **Docker** inside which you will run the Docker image; inside the **EMsoftGDL** folder, create a symbolic link to your regular EMsoft data folder using the following command:
 
 ```
 ln -s /full-path-to-your-EMsoft-data-folder EMsoftData
