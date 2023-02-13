@@ -12,38 +12,36 @@ This repository contains stand-alone IDL routines that can be executed in a GDL 
 * Pull the Docker image as follows:
 
 ```
-docker pull marcdegraef/gdl
+docker-compose pull marcdegraef/emsoftgdl
 ```
-
+Then proceed 
 
 ### Instructions for building GDL in a Docker image with X11 support on Mac OS X
 
-* If you haven't already done so, download and install the [Docker app](https://www.docker.com/products/docker-desktop/). Before you build this Docker image, make sure that you allocate sufficient memory in the Docker app settings; 48Gb of Memory seems to be what's needed (on Mac M1, running OS Monterey; if you get strange compilation errors during the GDL build, then that's probably because insufficient memory was allocated within the Docker app).
+1. If you haven't already done so, download and install the [Docker app](https://www.docker.com/products/docker-desktop/). Before you build this Docker image, make sure that you allocate sufficient memory in the Docker app settings; 48Gb of Memory seems to be what's needed (on Mac M1, running OS Monterey; if you get strange compilation errors during the GDL build, then that's probably because insufficient memory was allocated within the Docker app).
 
-* After cloning this repository, navigate to the Docker folder and build the Docker image using the following command (depending on your hardware, this can take several minutes):
-
+2. After cloning this repository, navigate to the Docker folder and build the Docker image using the following command (depending on your hardware, this can take several minutes):
 ```
 docker-compose up --build gdl
 ```
-
-* If this is the first time you are running this image, do the following steps:
-
-1. start XQuartz from the Applications/Utilities folder (install it first if you don't have it, from [XQuartz-2.8.1](https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.8.1/XQuartz-2.8.1.dmg)); in the Preferences window, select Security and turn on "Allow connections from network clients".
-2. to verify that things are properly configured, run *"netstat -an | grep -F 6000"* in an X11 terminal window; this should list a couple of ports that XQuartz is listening to  (Docker will connect on port 6000).
-3. restart XQuartz.
-4. in a regular terminal window (using the Terminal.app in the Utilities folder), execute the following command:
+3. If this is the first time you are running this image, do the following steps:
+ 
+* start XQuartz from the Applications/Utilities folder (install it first if you don't have it, from [XQuartz-2.8.1](https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.8.1/XQuartz-2.8.1.dmg)); in the Preferences window, select Security and turn on "Allow connections from network clients".
+* to verify that things are properly configured, run *"netstat -an | grep -F 6000"* in an X11 terminal window; this should list a couple of ports that XQuartz is listening to  (Docker will connect on port 6000).
+* restart XQuartz.
+* in a regular terminal window (using the Terminal.app in the Utilities folder), execute the following command:
 
 ```
 xhost +localhost
 ```
 
-* at the top level of this respository, create a symbolic link to the folder that contains your EMsoft data (master patterns, EBSD patterns, etc.); to make those files appear within the Docker image, the linked folder **must** have the name *"EMsoftData"*:
+1. * at the top level of this respository, create a symbolic link to the folder that contains your EMsoft data (master patterns, EBSD patterns, etc.); to make those files appear within the Docker image, the linked folder **must** have the name *"EMsoftData"*:
 
 ```
 ln -s /full-path-to-your-EMsoft-data-folder EMsoftData
 ```
 
-* in an X11 terminal window, navigate to the Docker folder in the repository and run the following Docker command to start the image:
+1. * in an X11 terminal window, navigate to the Docker folder in the repository and run the following Docker command to start the image:
 
 ```
 docker-compose run -e DISPLAY=host.docker.internal:0 gdl
