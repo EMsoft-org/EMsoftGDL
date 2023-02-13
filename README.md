@@ -1,7 +1,7 @@
 # EMsoftGDL
 This repository contains stand-alone IDL routines that can be executed in a GDL Docker image; GDL is an open-source package that is virtually compatible with IDL, apart from a few routines.  Below are instructions for obtaining the GDL Docker image, and for building the image on Mac OS X.  
 
-
+---
 
 ### Instructions for obtaining the GDL Docker image 
 
@@ -9,14 +9,27 @@ This repository contains stand-alone IDL routines that can be executed in a GDL 
 
 * If you haven't already done so, download and install the [Docker app](https://www.docker.com/products/docker-desktop/); start the app.
 
-* Create a folder inside which you will run the Docker image; this folder is where you will create the symbolic link to the data folder.  
-
-* Pull the Docker image as follows:
+* Create a folder called **EMsoftGDL**; inside this folder, create a second folder called **Docker** inside which you will run the Docker image; inside the **EMsoftGSL** folder, create a symbolic link to your regular EMsoft data folder using the following command:
 
 ```
-docker-compose pull marcdegraef/emsoftgdl
+ln -s /full-path-to-your-EMsoft-data-folder EMsoftData
+```  
+
+* Inside the **EMsoftGDL/Docker** folder, pull the Docker image as follows:
+
 ```
-Then proceed to item 4. on the list below.
+docker pull marcdegraef/emsoftgdl
+```
+* Then execute the image using the following command:
+
+```
+docker run --rm -it -e DISPLAY=host.docker.internal:0 -v /fullpathto/EMsoftData:/home/gdluser/data marcdegraef/emsoftgdl
+```
+Note the */fullpathto* in the -v option should be replaced with the full path to the EMsoftData folder that you just created as a symbolic link.
+
+Inside the image, start the gdl program by typing *gdl*; make sure there are no error messages and try to create a plot using the *plot,findgen(100)* command.
+
+---
 
 ### Instructions for building GDL in a Docker image with X11 support on Mac OS X
 
@@ -56,6 +69,10 @@ This will start the docker image; you will be logged in as *gdluser*, and there 
 3. pro: this contains all the IDL .pro routines.
 
 At the command prompt, type *"gdl"* to start the GDL program; to verify that things work properly, execute *"plot,findgen(100)"*; a window should show up with the corresponding plot.
+
+---
+
+### Executing the efit program
 
 To execute an IDL program (currently only the *efit* program is available), cd into the *pro* folder using *cd,'pro'* on the GDL command line, then compile the program *".r efit"*, and execute it with *"efit"*.  There will be a number of Gtk-CRITICAL warnings; we are looking to how to fix these.  They do not appear to affect the actual execution of the program.
 
