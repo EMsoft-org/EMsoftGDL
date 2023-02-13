@@ -7,14 +7,16 @@ This repository contains stand-alone IDL routines that can be executed in a GDL 
 
 * If you just want to run IDL programs in the GDL environment, then you do not need to build the docker image at all; you can just pull it from the Docker archive.
 
-* If you haven't already done so, download and install the [Docker app](https://www.docker.com/products/docker-desktop/); start the app and set the memory requirement as mentioned above.
+* If you haven't already done so, download and install the [Docker app](https://www.docker.com/products/docker-desktop/); start the app.
+
+* Create a folder inside which you will run the Docker image; this folder is where you will create the symbolic link to the data folder.  
 
 * Pull the Docker image as follows:
 
 ```
 docker-compose pull marcdegraef/emsoftgdl
 ```
-Then proceed 
+Then proceed to item 4. on the list below.
 
 ### Instructions for building GDL in a Docker image with X11 support on Mac OS X
 
