@@ -9,5 +9,5 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ../pro:/home/gdluser/pro
       - ../Resources:/home/gdluser/Resources
-      - /full-path-to-you-EMsoft-data-folder:/home/gdluser/data
+      - ../EMsoftData:/home/gdluser/data
     network_mode: "host"
