@@ -23,7 +23,7 @@ docker pull marcdegraef/gdl
 * After cloning this repository, navigate to the Docker folder and build the Docker image using the following command (depending on your hardware, this can take several minutes):
 
 ```
-docker-compose up --build
+docker-compose up --build gdl
 ```
 
 * If this is the first time you are running this image, do the following steps:

@@ -10,4 +10,18 @@ services:
       - ../pro:/home/gdluser/pro
       - ../Resources:/home/gdluser/Resources
       - ../EMsoftData:/home/gdluser/data
+    network_mode: "host" 
+    image: localhost:5000/gdl
+
+  gdlpush:
+    build: .
+    command: /bin/bash
+    environment:
+      - DISPLAY=${HOSTNAME}:0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ../pro:/home/gdluser/pro
+      - ../Resources:/home/gdluser/Resources
+      - ../EMsoftData:/home/gdluser/data
     network_mode: "host"
+    image: marcdegraef/emsoftgdl
