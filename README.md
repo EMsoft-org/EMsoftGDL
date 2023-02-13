@@ -26,22 +26,22 @@ docker-compose up --build gdl
 ```
 3. If this is the first time you are running this image, do the following steps:
  
-* start XQuartz from the Applications/Utilities folder (install it first if you don't have it, from [XQuartz-2.8.1](https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.8.1/XQuartz-2.8.1.dmg)); in the Preferences window, select Security and turn on "Allow connections from network clients".
-* to verify that things are properly configured, run *"netstat -an | grep -F 6000"* in an X11 terminal window; this should list a couple of ports that XQuartz is listening to  (Docker will connect on port 6000).
-* restart XQuartz.
-* in a regular terminal window (using the Terminal.app in the Utilities folder), execute the following command:
+	* start XQuartz from the Applications/Utilities folder (install it first if you don't have it, from [XQuartz-2.8.1](https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.8.1/XQuartz-2.8.1.dmg)); in the Preferences window, select Security and turn on "Allow connections from network clients".
+	* to verify that things are properly configured, run *"netstat -an | grep -F 6000"* in an X11 terminal window; this should list a couple of ports that XQuartz is listening to  (Docker will connect on port 6000).
+	* restart XQuartz.
+	* in a regular terminal window (using the Terminal.app in the Utilities folder), execute the following command:
 
 ```
 xhost +localhost
 ```
 
-1. * at the top level of this respository, create a symbolic link to the folder that contains your EMsoft data (master patterns, EBSD patterns, etc.); to make those files appear within the Docker image, the linked folder **must** have the name *"EMsoftData"*:
+4. at the top level of this respository, create a symbolic link to the folder that contains your EMsoft data (master patterns, EBSD patterns, etc.); to make those files appear within the Docker image, the linked folder **must** have the name *"EMsoftData"*:
 
 ```
 ln -s /full-path-to-your-EMsoft-data-folder EMsoftData
 ```
 
-1. * in an X11 terminal window, navigate to the Docker folder in the repository and run the following Docker command to start the image:
+5. in an X11 terminal window, navigate to the Docker folder in the repository and run the following Docker command to start the image:
 
 ```
 docker-compose run -e DISPLAY=host.docker.internal:0 gdl
