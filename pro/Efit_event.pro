@@ -292,11 +292,11 @@ end else begin
 		Efit_updatePC,/display
                 EfitCalc
 	endcase
-        'BEAMCURRENT' : begin
+        'DETBEAMCURRENT' : begin
                 Efitdata.detbeamcurrent = Core_WidgetEvent( Efitwidget_s.detbeamcurrent,  'Beam current set to [nA] ', '(F9.2)', /flt)
                 EfitCalc
 	endcase
-        'DWELLTIME' : begin
+        'DETDWELLTIME' : begin
                 Efitdata.detdwelltime = Core_WidgetEvent( Efitwidget_s.detdwelltime,  'Dwell time set to [mu s] ', '(F9.2)', /flt)
                 EfitCalc
 	endcase
